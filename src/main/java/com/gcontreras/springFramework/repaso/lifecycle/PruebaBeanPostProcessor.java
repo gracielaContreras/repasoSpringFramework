@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Se puede realizar acciones antes de ejecutar el bean y después de inicializar el bean
  * se conoce que bean se construyeron
  */
-@Component
+//@Component
 public class PruebaBeanPostProcessor implements BeanPostProcessor {
     private static Logger log = LoggerFactory.getLogger(PruebaBeanPostProcessor.class);
 
