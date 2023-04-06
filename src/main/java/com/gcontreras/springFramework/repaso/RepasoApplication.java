@@ -1,5 +1,6 @@
 package com.gcontreras.springFramework.repaso;
 
+import com.gcontreras.springFramework.repaso.aop.TargetObject;
 import com.gcontreras.springFramework.repaso.autowired.CalcularAreaService;
 import com.gcontreras.springFramework.repaso.profile.EnviromentService;
 import com.gcontreras.springFramework.repaso.scopes.EjemploScopeService;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 @SpringBootApplication
 public class RepasoApplication {
-	private static Logger log= LoggerFactory.getLogger(RepasoApplication.class);
+	private static final Logger log= LoggerFactory.getLogger(RepasoApplication.class);
 
 	//Declaración de beans de forma explicita
 	@Bean //defino el objeto que se va a devolver cuando se inyecte un bean de tipo String
@@ -28,7 +29,7 @@ public class RepasoApplication {
 	public static void main(String[] args) {
 
 		ConfigurableApplicationContext context = SpringApplication.run(RepasoApplication.class, args);
-		EnviromentService env = context.getBean(EnviromentService.class);
+/*		EnviromentService env = context.getBean(EnviromentService.class);
 		log.info("El entorno que estoy utilizando es: {}", env.getEnviroment());
 
 		log.info("Probando spring scopes");
@@ -43,9 +44,12 @@ public class RepasoApplication {
 
 		log.info("Probando inyectando multiples objetos");
 		CalcularAreaService calcArea = context.getBean(CalcularAreaService.class);
- 		log.info("La suma de las area es: {} ", calcArea.getTotalAreas());
+ 		log.info("La suma de las area es: {} ", calcArea.getTotalAreas());*/
 
-		 //Callback
+		log.info("Aop Programación orientada a aspecto");
+		TargetObject targetObject = context.getBean(TargetObject.class);
+		targetObject.hello("Hello World");
+		targetObject.foo();
 
 	}
 
