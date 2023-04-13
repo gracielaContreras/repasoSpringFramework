@@ -67,7 +67,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/users/username/monique.larkin",
+							"raw": "http://localhost:8080/api/v1/users/username/sol.bogisich",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -78,7 +78,100 @@
 								"v1",
 								"users",
 								"username",
-								"monique.larkin"
+								"sol.bogisich"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users find by usernames",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/usernames",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"usernames"
+							],
+							"query": [
+								{
+									"key": "letraBuscar",
+									"value": "ma",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users find by startWith SIN paginación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/buscar?startWith=sol",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "startWith",
+									"value": "sol"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users find by startWith CON paginación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/buscarConPaginacion?startWith=sol&page=0&size=15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"buscarConPaginacion"
+							],
+							"query": [
+								{
+									"key": "startWith",
+									"value": "sol"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "15"
+								}
 							]
 						}
 					},
