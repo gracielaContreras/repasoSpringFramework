@@ -24,7 +24,7 @@ public class ProyectoJPA implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20000; i++) {
             User user = new User();
             user.setPassword(faker.dragonBall().character());
             user.setProfile(null);

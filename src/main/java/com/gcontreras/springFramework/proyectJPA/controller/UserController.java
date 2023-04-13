@@ -3,23 +3,26 @@ package com.gcontreras.springFramework.proyectJPA.controller;
 import com.gcontreras.springFramework.proyectJPA.entities.User;
 import com.gcontreras.springFramework.proyectJPA.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
+import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
     @Autowired
     private UserService userService;
+//    @GetMapping
+//    public ResponseEntity<Page<User>> getUsers(
+//            @RequestParam(name = "page", required = false) int page,
+//            @RequestParam(name = "size", required = false) int size){
+//        return new ResponseEntity<>(userService.getUsers(page,size),HttpStatus.OK);
+//    }
     @GetMapping
-    public ResponseEntity<List<User>> getUsers(){
-        return new ResponseEntity<>(userService.getUsers(),HttpStatus.OK);
+    public ResponseEntity<Page<User>> getUsers(
+            @RequestParam(name = "page", required = false, defaultValue = "0") int page, //con defaultValue asignas un valor por defecto
+            @RequestParam(name = "size", required = false, defaultValue = "1000") int size){
+        return new ResponseEntity<>(userService.getUsers(page,size),HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")
