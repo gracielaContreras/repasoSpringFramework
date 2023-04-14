@@ -2,6 +2,10 @@ package com.gcontreras.springFramework.proyectJPA.controller;
 
 import com.gcontreras.springFramework.proyectJPA.entities.User;
 import com.gcontreras.springFramework.proyectJPA.services.UserService;
+import io.micrometer.core.annotation.Timed;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -20,6 +24,7 @@ public class UserController {
 //        return new ResponseEntity<>(userService.getUsers(page,size),HttpStatus.OK);
 //    }
     @GetMapping
+    @Timed(value = "get.user", description = "Time taken to return Gets") //Se agrega para dar seguimiento en prometheus
     public ResponseEntity<Page<User>> getUsers(
             @RequestParam(name = "page", required = false, defaultValue = "0") int page, //con defaultValue asignas un valor por defecto
             @RequestParam(name = "size", required = false, defaultValue = "1000") int size){
@@ -46,6 +51,11 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
+    @ApiOperation(value = "Returns a user for a given user id", response =User.class) // Se agrega para Swagger
+    @ApiResponses(value = { // Se agrega para Swagger
+            @ApiResponse(code =200, message = "The record was found"),
+            @ApiResponse(code = 404, message = "The record was not found")
+    })
     public ResponseEntity<User> getUsersById(@PathVariable Integer userId){
         return new ResponseEntity<>(userService.getUsersById(userId),HttpStatus.OK);
     }
