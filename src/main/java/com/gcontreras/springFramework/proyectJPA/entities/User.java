@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
@@ -12,7 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class User {
+public class User implements Serializable {
+//Se implementa una interfaz serializable porque los bean que viajan en un flujo o String deben ser serializable
+// para qué se pueda convertir el objeto en un formato que puede ser guardado y transmitido a través de la red o almacenado en disco.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,5 +29,7 @@ public class User {
     @OneToOne
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
+
+    private static final long serialVersionUID = 3110389822608180777L;
 
 }
