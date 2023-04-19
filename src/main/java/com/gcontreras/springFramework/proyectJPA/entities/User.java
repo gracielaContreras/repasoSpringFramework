@@ -26,10 +26,6 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    private Profile profile;
-
     private static final long serialVersionUID = 3110389822608180777L;
 
 }

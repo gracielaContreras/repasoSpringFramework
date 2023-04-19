@@ -26,4 +26,8 @@ public class Profile {
 
     @Column(name = "birth_date")
     private String birthDate;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

@@ -27,7 +27,6 @@ public class ProyectoJPA implements ApplicationRunner {
         for (int i = 0; i < 20000; i++) {
             User user = new User();
             user.setPassword(faker.dragonBall().character());
-            user.setProfile(null);
             user.setUsername(faker.name().username());
             userRepository.save(user);
         }
