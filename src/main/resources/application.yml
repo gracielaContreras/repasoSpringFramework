@@ -8,10 +8,10 @@ spring:
         password:
         url: jdbc:h2:mem:testdb
 
-    security:
-        user:
-            name: admin
-            password: pruebaAdmin12#.$
+#    security:
+#        user:
+#            name: admin
+#            password: pruebaAdmin12#.$
 
 management:
     endpoints:
