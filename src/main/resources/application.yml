@@ -16,7 +16,7 @@ spring:
 management:
     endpoints:
         web:
-            exposure:
+            exposure: 
                 include: health,info,metrics,prometheus
 
 
